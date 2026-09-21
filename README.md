@@ -48,6 +48,9 @@ public/
 └── sw.js
 ```
 
+## Produto e código público
+Este repositório representa a base community/histórica do DevFlow. Recursos comerciais futuros — conta, progresso em nuvem, analytics, IA, billing e gestão de turmas — são tratados como plataforma privada. Veja `docs/ARCHITECTURE.md`.
+
 ## Roadmap
 A plataforma já possui a fundação dos módulos até **APIs & Web**. Próximas evoluções: aprofundar laboratórios de Java/Spring/SQL/API, sistema global de XP/conquistas, testes automatizados, acessibilidade, PWA completa com ícones e publicação.
 
