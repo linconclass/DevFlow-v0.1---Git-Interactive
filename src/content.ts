@@ -1,0 +1,43 @@
+export type Topic={id:string;title:string;command?:string;summary:string;visual:string;example:string;challenge:string};
+export type Module={id:string;name:string;tag:string;icon:string;description:string;topics:Topic[]};
+export const modules:Module[]=[
+{id:'git',name:'Git',tag:'VERSIONAMENTO',icon:'⑂',description:'Do primeiro commit a fluxos colaborativos.',topics:[
+{id:'init',title:'init & clone',command:'git init',summary:'Crie um repositório ou copie um existente.',visual:'pasta → .git → histórico',example:'git clone repo.git',challenge:'Quando usar clone em vez de init?'},
+{id:'status',title:'status & diff',command:'git status',summary:'Inspecione estado e diferenças antes de registrar.',visual:'working → diff → staging',example:'git diff --staged',challenge:'Descubra o que entrará no próximo commit.'},
+{id:'stage',title:'add & restore',command:'git add .',summary:'Controle exatamente quais mudanças entram no snapshot.',visual:'working → staging',example:'git restore --staged App.tsx',challenge:'Remova um arquivo do stage sem apagá-lo.'},
+{id:'history',title:'commit & log',command:'git commit',summary:'Registre snapshots e navegue pelo histórico.',visual:'A ●──● B ──● C',example:'git log --oneline --graph',challenge:'Encontre o hash do commit anterior.'},
+{id:'branch',title:'branch & switch',command:'git switch -c feature',summary:'Crie linhas paralelas de desenvolvimento.',visual:'main ●──●\n       ╲──● feature',example:'git switch main',challenge:'Crie feature/login e volte à main.'},
+{id:'merge',title:'merge & conflicts',command:'git merge feature',summary:'Reúna histórias e resolva divergências explicitamente.',visual:'feature ╲──●──╲\nmain ●──●────●',example:'git merge feature/login',challenge:'Resolva um conflito no mesmo trecho.'},
+{id:'remote',title:'fetch, pull & push',command:'git pull',summary:'Sincronize seu histórico local com o remoto.',visual:'local ⇄ origin',example:'git fetch origin',challenge:'Atualize referências sem fazer merge.'},
+{id:'undo',title:'reset & revert',command:'git revert HEAD',summary:'Desfaça mudanças entendendo quando preservar o histórico.',visual:'A──B──C → A──B──C──C⁻¹',example:'git reset --soft HEAD~1',challenge:'Desfaça com segurança um commit publicado.'},
+{id:'stash',title:'stash',command:'git stash',summary:'Guarde trabalho temporariamente sem criar commit.',visual:'working → stash → working',example:'git stash pop',challenge:'Troque de branch com trabalho incompleto.'},
+{id:'rebase',title:'rebase',command:'git rebase main',summary:'Reposicione commits sobre uma nova base.',visual:'A──B──C + D──E → A──B──C──D′──E′',example:'git rebase -i HEAD~3',challenge:'Explique por que hashes mudam.'},
+{id:'cherry',title:'cherry-pick',command:'git cherry-pick <hash>',summary:'Aplique um commit específico em outra branch.',visual:'feature ●X → main ●X′',example:'git cherry-pick a1b2c3d',challenge:'Traga somente um hotfix para main.'},
+{id:'ignore',title:'.gitignore',summary:'Defina arquivos que não devem ser versionados.',visual:'.env ✕  dist/ ✕  src/ ✓',example:'node_modules/\n.env\ndist/',challenge:'Ignore segredos e dependências.'}]},
+{id:'java',name:'Java',tag:'LINGUAGEM',icon:'☕',description:'Visualize objetos, memória e execução na JVM.',topics:[
+{id:'jvm',title:'JDK, JRE & JVM',summary:'Entenda o caminho do código-fonte até bytecode e execução.',visual:'.java → javac → .class → JVM',example:'javac Main.java\njava Main',challenge:'Qual parte executa o bytecode?'},
+{id:'oop',title:'Classes & objetos',summary:'Modele estado e comportamento com instâncias.',visual:'Classe → objeto A\n      → objeto B',example:'var user = new User("Ana");',challenge:'Separe atributo de comportamento.'},
+{id:'memory',title:'Stack & Heap',summary:'Veja referências na stack apontando para objetos no heap.',visual:'stack [user] ───→ heap {User}',example:'User user = new User();',challenge:'Onde vive a referência local?'},
+{id:'collections',title:'Collections',summary:'Escolha List, Set e Map pelo comportamento necessário.',visual:'List [a,b,b] · Set {a,b} · Map {k:v}',example:'List<String> names = new ArrayList<>();',challenge:'Qual coleção evita duplicatas?'},
+{id:'streams',title:'Streams',summary:'Transforme pipelines de dados de forma declarativa.',visual:'dados → filter → map → collect',example:'users.stream().filter(User::active).toList();',challenge:'Filtre ativos sem alterar a lista original.'},
+{id:'exceptions',title:'Exceptions',summary:'Modele falhas e caminhos de recuperação.',visual:'try → erro → catch → finally',example:'try { run(); } catch(Exception e) { }',challenge:'Quando criar uma exception própria?'}]},
+{id:'spring',name:'Spring Boot',tag:'BACKEND',icon:'◉',description:'Do request HTTP ao bean, service e banco.',topics:[
+{id:'bean',title:'Bean Lifecycle',summary:'Acompanhe criação, injeção, inicialização e destruição.',visual:'instantiate → inject → @PostConstruct → ready → @PreDestroy',example:'@Component\nclass PaymentService {}',challenge:'Quando @PostConstruct executa?'},
+{id:'di',title:'Dependency Injection',summary:'Inverta a responsabilidade de construir dependências.',visual:'Controller → Service → Repository',example:'public UserController(UserService service)',challenge:'Por que preferir injeção por construtor?'},
+{id:'rest',title:'REST Controller',summary:'Mapeie HTTP para operações da aplicação.',visual:'POST /users → Controller → Service',example:'@PostMapping("/users")',challenge:'Qual status usar após criar um recurso?'},
+{id:'jpa',title:'JPA & Repository',summary:'Conecte entidades e persistência com abstrações.',visual:'Entity ⇄ Repository ⇄ SQL',example:'interface UserRepo extends JpaRepository<User,Long>',challenge:'O que representa uma Entity?'},
+{id:'security',title:'Security Flow',summary:'Visualize autenticação antes do controller.',visual:'request → filter → auth → controller',example:'SecurityFilterChain',challenge:'Diferencie autenticação de autorização.'}]},
+{id:'sql',name:'SQL & Database',tag:'DADOS',icon:'▤',description:'Entenda consultas, índices e transações visualmente.',topics:[
+{id:'select',title:'SELECT & filtros',summary:'Transforme perguntas em consultas.',visual:'table → WHERE → projection → rows',example:'SELECT name FROM users WHERE active = true;',challenge:'Retorne apenas usuários ativos.'},
+{id:'join',title:'JOIN',summary:'Combine relações usando chaves.',visual:'users.id ⇄ orders.user_id',example:'SELECT * FROM users u JOIN orders o ON o.user_id=u.id;',challenge:'Quando LEFT JOIN preserva linhas?'},
+{id:'index',title:'Índices',summary:'Troque custo de escrita e espaço por buscas mais eficientes.',visual:'scan: ▢▢▢▢▢ → index: árvore → linha',example:'CREATE INDEX idx_email ON users(email);',challenge:'Por que não indexar toda coluna?'},
+{id:'tx',title:'Transações',summary:'Agrupe operações com propriedades ACID.',visual:'BEGIN → operations → COMMIT / ROLLBACK',example:'BEGIN; UPDATE accounts ...; COMMIT;',challenge:'O que rollback protege?'},
+{id:'model',title:'Modelagem',summary:'Organize entidades, chaves e cardinalidades.',visual:'User 1 ─── N Order',example:'orders.user_id → users.id',challenge:'Modele cliente e pedidos.'}]},
+{id:'api',name:'APIs & Web',tag:'INTEGRAÇÃO',icon:'↔',description:'HTTP, REST, autenticação e comunicação entre sistemas.',topics:[
+{id:'http',title:'HTTP',summary:'Veja request e response como mensagens estruturadas.',visual:'Client ──GET /users──→ API\nClient ←──200 JSON──── API',example:'GET /api/users HTTP/1.1',challenge:'Diferencie método, status e header.'},
+{id:'rest',title:'REST',summary:'Modele recursos com URLs, métodos e representações.',visual:'POST create · GET read · PATCH update · DELETE',example:'GET /users/42',challenge:'Projete endpoints para pedidos.'},
+{id:'status',title:'Status Codes',summary:'Comunique resultados usando semântica HTTP.',visual:'2xx sucesso · 4xx cliente · 5xx servidor',example:'201 Created · 404 Not Found',challenge:'Qual status para validação inválida?'},
+{id:'auth',title:'JWT & Auth',summary:'Entenda emissão e validação de tokens.',visual:'login → token → Authorization → validate',example:'Authorization: Bearer <token>',challenge:'Por que não colocar senha no JWT?'},
+{id:'cors',title:'CORS',summary:'Entenda por que browsers bloqueiam origens não autorizadas.',visual:'browser → preflight OPTIONS → API → allow/deny',example:'Access-Control-Allow-Origin',challenge:'Quem aplica CORS: browser ou Postman?'},
+{id:'ws',title:'WebSocket',summary:'Mantenha comunicação bidirecional persistente.',visual:'client ⇄⇄⇄ server',example:'new WebSocket("wss://...")',challenge:'Quando preferir WebSocket a polling?'}]}
+];
