@@ -1,0 +1,1 @@
+export const productConfig={name:'DevFlow',edition:'product',version:'0.7.0',progressStorageKey:'devflow:progress:v2'} as const;
