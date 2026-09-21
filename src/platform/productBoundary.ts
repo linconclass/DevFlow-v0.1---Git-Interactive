@@ -1,0 +1,3 @@
+export type ProductTier='community'|'pro'|'education';
+export type ProductCapability='cloud-progress'|'global-gamification'|'analytics'|'ai-tutor'|'billing'|'classroom';
+export const communityBoundary={tier:'community' as ProductTier,publicFeatures:['visual-lessons','git-labs','learning-map'],privateCapabilities:['cloud-progress','global-gamification','analytics','ai-tutor','billing','classroom'] as ProductCapability[]};
