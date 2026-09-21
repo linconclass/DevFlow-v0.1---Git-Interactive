@@ -1,0 +1,1 @@
+export type Plan='free'|'pro'|'education';export type Role='learner'|'educator'|'admin';export type ProgressRecord={moduleId:string;topicId:string;completedAt:string;xp:number};export type LearnerProfile={id:string;displayName:string;role:Role;plan:Plan;xp:number;streak:number};
